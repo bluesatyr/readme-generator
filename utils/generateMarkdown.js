@@ -26,10 +26,9 @@ function renderLicenseBadge(license, licenseObj) {
     } else if (license) {
     const licenseBadgeUrl = licenseObj[license].badge;
     const licenseLinkUrl = licenseObj[license].link;
-    const 
-    }
-    
-}
+    return `${licenseBadgeUrl}(${licenseLinkUrl})`;
+    }  
+};
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
