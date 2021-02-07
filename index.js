@@ -79,7 +79,7 @@ const questions = [
     }, 
     {
         type: 'confirm',
-        name: 'confirmAbout',
+        name: 'confirmLicense',
         message: 'Would you like to provide a license for your project?',
         default: true
     },
@@ -87,7 +87,14 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Please choose a license for your project:',
-        choices: ['Apache License', 'GNU General Public License', 'MIT License', 'BDS License', 'Creative Commons Zero Universal']
+        choices: ['Apache License', 'GNU General Public License', 'MIT License', 'BDS License', 'Creative Commons Zero Universal'],
+        when: ({ confirmLicense }) => {
+                if (confirmLicense) {
+                    return true;
+                } else {
+                    return false;
+                }
+        }
     }
 ];
 
@@ -121,7 +128,7 @@ function init() {
         return generateMarkdown(projectData);
         }).
         then(markdown => {
-        return writeToFile('README.md', markdown);
+        return writeToFile(markdown);
         })
         .then(writeFileResponse => {
             console.log(writeFileResponse);
