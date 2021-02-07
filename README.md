@@ -6,6 +6,10 @@
 
 This application creates a professional README.md file for a GitHub project based upon input provided by the user.
 
+## Walkthrough Video Link
+
+You can see a [walkthrough video of this app here](https://drive.google.com/file/d/1_Bt3A__9yxAmxkL2JfOqeSLgoDlYBl6t/viewusp=sharing)
+
 ## Table of Contents 
 
 * [Installation](#installation)
