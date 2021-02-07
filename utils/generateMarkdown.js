@@ -1,4 +1,4 @@
-const testData = {
+/* const testData = {
   github: 'bluesatyr',
   email: 'shawnevans.music@gmail.com',
   title: 'README generator',
@@ -9,6 +9,7 @@ const testData = {
   tests: '',
   license: 'MIT License'
 }
+*/
 
 const licenseObj = {
     'Apache License':{badge:"[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]" , link:"https://opensource.org/licenses/Apache-2.0" },
@@ -18,7 +19,7 @@ const licenseObj = {
     'Creative Commons Zero Universal':{badge:"[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)]" , link:"http://creativecommons.org/publicdomain/zero/1.0/"}
 };
 
-// TODO: Create a function that returns a license badge based on which license is passed in
+// returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license, licenseObj) {
     if (!license) {
@@ -30,17 +31,32 @@ function renderLicenseBadge(license, licenseObj) {
     }  
 };
 
-// TODO: Create a function that returns the license link
+// returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license, licenseObj) {}
+function renderLicenseLink(license, licenseObj) {
+    if (!license) {
+        return "";
+    } else if (license) {
+    const licenseLinkUrl = licenseObj[license].link;
+    return licenseLinkUrl;
+    }  
+};
 
-// TODO: Create a function that returns the license section of README
+// returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license, licenseObj) {
+    if (!license) {
+        return "";
+    } else if (license) {
+    const licenseLinkUrl = licenseObj[license].link;
+    return `## License\n
+This project uses the ${license}. More info about this license can be found at ${licenseLinkUrl}`;
+    }  
+};
 
 
 const filterSections = sections => {
-    // filter() those that exist then map() to generate text
+    // filter() those that exist
     const contentHeadingArr = sections.filter(item => {
         if (item[1]) {
             return true;
@@ -51,6 +67,7 @@ const filterSections = sections => {
     return contentHeadingArr; 
 };
 
+// genrate section headings and content for optional info
 const generateSections = sections => {
     const contentHeadingArr = filterSections(sections);
     let sectionsContent = '\n';
@@ -63,8 +80,8 @@ const generateSections = sections => {
     return sectionsContent;
 };
 
-// TODO function to generate table of contents 
-const generateTableOfContents = sections => {
+// generate table of contents 
+const generateTableOfContents = (sections, license) => {
     const contentHeadingArr = filterSections(sections);
     let tableOfContents = '## Table of Contents \n\n';
     for (let i = 0; i < contentHeadingArr.length; i++) {
@@ -72,29 +89,33 @@ const generateTableOfContents = sections => {
         let newHeading = `* [${sectionHeading}](#${sectionHeading.toLowerCase()})\n`;
         tableOfContents += newHeading;
     }
+    if (license){
+        tableOfContents += "* [License](#license)\n";
+    }
     return tableOfContents;
 };
   
 
-// TODO: Create a function to generate markdown for README
-// module.exports = data => 
-const generateMarkdown = data => {
+// main function to generate markdown
+module.exports = data => {
+//const generateMarkdown = data => {
     // destructure page data by section
     const sections = [['Installation', data.installation], ['Usage', data.usage], ['Contribution', data.contribution], ['Tests', data.tests]];
     
-    console.log(`# ${data.title}
+    return `# ${data.title}
+
+${renderLicenseBadge(data.license, licenseObj)}
 
 ## Description
 
 ${data.description}
 
-${generateTableOfContents(sections)}
+${generateTableOfContents(sections, data.license)}
 ${generateSections(sections)}
-
-`   );
+${renderLicenseSection(data.license, licenseObj)}
+    `;
     
 }
 
-generateMarkdown(testData);
+//generateMarkdown(testData);
 
-//[![License](https://img.shields.io/badge/License-${licenseBadgeURL})](https://${licenseLink})
