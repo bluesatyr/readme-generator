@@ -8,7 +8,7 @@ This application creates a professional README.md file for a GitHub project base
 
 ## Walkthrough Video Link
 
-You can see a [walkthrough video of this app here](https://drive.google.com/file/d/1_Bt3A__9yxAmxkL2JfOqeSLgoDlYBl6t/viewusp=sharing)
+You can see a [walkthrough video of this app here](https://drive.google.com/file/d/1_Bt3A__9yxAmxkL2JfOqeSLgoDlYBl6t/view)
 
 ## Table of Contents 
 
