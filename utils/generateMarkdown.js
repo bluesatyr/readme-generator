@@ -10,17 +10,30 @@ const testData = {
   license: 'MIT License'
 }
 
+const licenseObj = {
+    'Apache License':{badge:"[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]" , link:"https://opensource.org/licenses/Apache-2.0" },
+    'GNU General Public License':{badge:"[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]" , link:"https://www.gnu.org/licenses/gpl-3.0" },
+    'MIT License':{badge:"[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]" , link:"https://opensource.org/licenses/MIT" }, 
+    'BDS License':{badge:"[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)]" , link:"https://opensource.org/licenses/BSD-3-Clause" }, 
+    'Creative Commons Zero Universal':{badge:"[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)]" , link:"http://creativecommons.org/publicdomain/zero/1.0/"}
+};
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {
+function renderLicenseBadge(license, licenseObj) {
+    if (!license) {
+        return "";
+    } else if (license) {
+    const licenseBadgeUrl = licenseObj[license].badge;
+    const licenseLinkUrl = licenseObj[license].link;
+    const 
+    }
     
-    //license badge url
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license, licenseObj) {}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
