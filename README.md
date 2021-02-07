@@ -26,6 +26,6 @@ Use node to run index.js and then simply follow the prompts in the command line 
 
 This project uses the MIT License. More info about this license can be found at https://opensource.org/licenses/MIT
     
-## More Info
+## Questions
 
 For additional information on this project contact me by email at shawnevans.music@gmail.com or visit my GitHub page at https://github.com/bluesatyr.

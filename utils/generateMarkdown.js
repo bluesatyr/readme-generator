@@ -100,7 +100,7 @@ ${generateTableOfContents(sections, data.license)}
 ${generateSections(sections)}
 ${renderLicenseSection(data.license, licenseObj)}
     
-## More Info
+## Questions
 
 For additional information on this project contact me by email at ${data.email} or visit my GitHub page at https://github.com/${data.github}.`;
     
