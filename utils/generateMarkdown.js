@@ -1,16 +1,3 @@
-/* const testData = {
-  github: 'bluesatyr',
-  email: 'shawnevans.music@gmail.com',
-  title: 'README generator',
-  description: 'generates readme files from user input',
-  installation: 'make sure you install this',
-  usage: 'answer all the questions to generate a README.md file',
-  contribution: '',
-  tests: '',
-  license: 'MIT License'
-}
-*/
-
 const licenseObj = {
     'Apache License':{badge:"[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]" , link:"https://opensource.org/licenses/Apache-2.0" },
     'GNU General Public License':{badge:"[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]" , link:"https://www.gnu.org/licenses/gpl-3.0" },
@@ -98,7 +85,6 @@ const generateTableOfContents = (sections, license) => {
 
 // main function to generate markdown
 module.exports = data => {
-//const generateMarkdown = data => {
     // destructure page data by section
     const sections = [['Installation', data.installation], ['Usage', data.usage], ['Contribution', data.contribution], ['Tests', data.tests]];
     
@@ -113,9 +99,12 @@ ${data.description}
 ${generateTableOfContents(sections, data.license)}
 ${generateSections(sections)}
 ${renderLicenseSection(data.license, licenseObj)}
-    `;
+    
+## More Info
+
+For additional information on this project contact me by email at ${data.email} or visit my GitHub page at https://github.com/${data.github}.`;
     
 }
 
-//generateMarkdown(testData);
+
 

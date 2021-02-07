@@ -76,6 +76,12 @@ const questions = [
         type: 'input',
         name: 'tests',
         message: 'Please provide any tests you would like to include for your project:',
+    }, 
+    {
+        type: 'confirm',
+        name: 'confirmAbout',
+        message: 'Would you like to provide a license for your project?',
+        default: true
     },
     {
         type: 'list',
@@ -113,15 +119,18 @@ function init() {
     promptUser()
         .then(projectData => {
         return generateMarkdown(projectData);
-    }).then(markdown => {
+        }).
+        then(markdown => {
         return writeToFile('README.md', markdown);
-    }).then(console.log('Your README.md file has been created!'))
-      .catch(err => {
+        })
+        .then(writeFileResponse => {
+            console.log(writeFileResponse);
+        })
+        .catch(err => {
         console.log(err);
-    });
+        });
 };
 
 // Function call to initialize app
 init();
-
 
