@@ -90,9 +90,23 @@ const promptUser = () => {
 }
 
 // A function to write README file
-function writeToFile(fileName, data) {
-    
-}
+function writeToFile(data) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/README.md', data, err => {
+            // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
+            if (err) {
+                reject(err);
+                // return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'File created!'
+            });
+        });
+    });
+};
+
 
 // A function to initialize app
 function init() {
@@ -101,34 +115,13 @@ function init() {
         return generateMarkdown(projectData);
     }).then(markdown => {
         return writeToFile('README.md', markdown);
-    })
-    
-}
+    }).then(console.log('Your README.md file has been created!'))
+      .catch(err => {
+        console.log(err);
+    });
+};
 
 // Function call to initialize app
 init();
 
 
-
-/*
-
-promptUser()
-  .then(promptProject)
-  .then(portfolioData => {
-    return generatePage(portfolioData);
-  })
-  .then(pageHTML => {
-    return writeFile(pageHTML);
-  })
-  .then(writeFileResponse => {
-    console.log(writeFileResponse);
-    return copyFile();
-  })
-  .then(copyFileResponse => {
-    console.log(copyFileResponse);
-  })
-  .catch(err => {
-    console.log(err);
-  });
-  
-  */
